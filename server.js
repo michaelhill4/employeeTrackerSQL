@@ -19,23 +19,24 @@ const db = mysql.createConnection(
     },
     console.log("Connected to the teamdb database")
   );
-
-  const topPrompt = () => {
+  
+const mainPrompt = () => {
     return inquirer.prompt([
-      {
+        {
         type: "list",
-        message: "What would you like to do?",
+        message: "Hello, what can I help you with?"
         choices: [
-          "View All Employees",
-          "Add Employee",
-          "Update Employee Role",
-          "Update Employee's Manager",
-          "View All Roles",
-          "Add Role",
-          "View All Departments",
-          "Add Department",
-          "Quit"
+            "View All Employees",
+            "Add Employee",
+            "Update Employee Role",
+            "View All Roles",
+            "Add Role",
+            "View All Departments",
+            "Add Department",
+            "Quit"
         ],
-        name: "employeeAdd",
-        
-      }]
+        name: "addEmployee",
+
+        }
+    ]).then((newThing))
+}
