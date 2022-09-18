@@ -11,7 +11,7 @@ VALUE ("Store Manager", 50000.00, 1),
         ("District Manager", 80000.00, 3);
 
 INSERT INTO employees (first_name, last_name, role_id, manager_id)
-VALUE ("", "", 1, null), 
-        ("", "", 2, null), 
-        ("", "", 4, 2), 
-        ("", "", 5, 2);
+VALUE ("Aaron", "Giancarlo", 1, null), 
+        ("Josh", "Gleyber", 2, null), 
+        ("Oswald", "Jose", 4, 2), 
+        ("Kyle", "Anthony", 5, 2);
