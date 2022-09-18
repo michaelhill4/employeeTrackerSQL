@@ -38,5 +38,8 @@ const mainPrompt = () => {
         name: "addEmployee",
 
         }
-    ]).then((newThing))
+    ]).then((newThing) => {
+
+    })
 }
+
