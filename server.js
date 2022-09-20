@@ -1,8 +1,8 @@
 const express = require('express');
 const mysql = require('mysql2');
-const inquirer = require("inquirer")
 
-const port = process.env.PORT || 3001;
+
+const PORT = process.env.PORT || 3001;
 const app = express();
 
 //middleware
@@ -19,27 +19,16 @@ const db = mysql.createConnection(
     },
     console.log("Connected to the teamdb database")
   );
+
+  db.query('SELECT * FROM department', function (err, results) {
+    console.log(results);
+  });
   
-const mainPrompt = () => {
-    return inquirer.prompt([
-        {
-        type: "list",
-        message: "Hello, what can I help you with?"
-        choices: [
-            "View All Employees",
-            "Add Employee",
-            "Update Employee Role",
-            "View All Roles",
-            "Add Role",
-            "View All Departments",
-            "Add Department",
-            "Quit"
-        ],
-        name: "addEmployee",
-
-        }
-    ]).then((newThing) => {
-
-    })
-}
-
+  app.use((req, res) => {
+    res.status(404).end();
+  });
+  
+  
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
