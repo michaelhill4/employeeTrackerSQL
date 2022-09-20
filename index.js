@@ -62,3 +62,73 @@ const viewDept = () => {
     startDb()
   });
   }
+
+  const viewRoles = () => {
+    var con = mysql.createConnection({
+        host: "localhost",
+        user: "root",
+        password: "Huncho",
+        database: "teamdb"
+      });
+      
+      con.connect(function(err) {
+        if (err) throw err;
+        con.query("SELECT * FROM roles", function (err, result, fields) {
+          if (err) throw err;
+          console.table(result);
+        });
+      startDb()
+      });
+      }
+
+      const viewEmployees = () => {
+        var con = mysql.createConnection({
+            host: "localhost",
+            user: "root",
+            password: "Huncho",
+            database: "teamdb"
+          });
+          
+          con.connect(function(err) {
+            if (err) throw err;
+            con.query("SELECT * FROM employee", function (err, result, fields) {
+              if (err) throw err;
+              console.table(result);
+            });
+          startDb()
+          });
+    }
+
+    const addDepartment = () => {
+      return inquirer.prompt([
+          {
+              type:'number',
+              message:'insert id number',
+              name:'deptID'
+          },
+          {
+              type:'input',
+              message:'insert department name',
+              name:'deptName'
+          }
+      ]) .then((resp) => {
+      startDb()
+      var con = mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password: "Huncho",
+      database: "teamdb"
+  });
+
+  con.connect(function(err) {
+    if (err) throw err;
+    console.log("haram");
+    var sql = `INSERT INTO department (id, department_name) VALUES (${resp.deptID}, "${resp.deptName}")`
+    con.query(sql, function (err, result) {
+      if (err) throw err;
+      console.log("New department created");
+    });
+  })
+      })
+  }
+      
